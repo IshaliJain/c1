@@ -1,0 +1,83 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Credentials and secrets
+credentials/
+secrets/
+*.pem
+*.key
+*.crt
+.databricks/
+.databrickscfg
+
+# Databricks local configuration
+.databricks/
+cluster-config.json
+workspace.json
+
+# PySpark / Spark
+spark-warehouse/
+metastore_db/
+derby.log
+*.log
+
+# Generated temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data files (local only; data/ directory tracked via .gitkeep)
+data/*
+!data/.gitkeep
