@@ -66,7 +66,12 @@ logger = logging.getLogger(__name__)
 
 
 def _project_root() -> Path:
-    return Path(__file__).resolve().parents[2]
+    try:
+        return Path(__file__).resolve().parents[2]
+    except NameError:
+        # In Databricks, __file__ is not defined; use current working directory
+        # Assumes script is in src/data_generation/, so go up 2 levels
+        return Path.cwd().parents[1]
 
 
 def _init_faker() -> Faker:
@@ -362,7 +367,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Skip PySpark validation step",
     )
-    return parser.parse_args()
+    return parser.parse_args([])
 
 
 def main() -> None:
