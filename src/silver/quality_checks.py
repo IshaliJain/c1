@@ -7,7 +7,7 @@ Each function adds a boolean failure flag column; rows are never dropped.
 from __future__ import annotations
 
 from pyspark.sql import DataFrame
-from pyspark.sql.functions import col, count, regexp_extract, to_date, when
+from pyspark.sql.functions import col, count, lit, to_date, trim
 from pyspark.sql.window import Window
 
 from silver_common import is_null_or_empty
@@ -42,7 +42,7 @@ def apply_referential_checks(
     Args:
         references: list of (fk_column, parent_df, parent_key_column)
     """
-    result = df.withColumn("_failed_referential", lit_false())
+    result = df.withColumn("_failed_referential", lit(False))
 
     for idx, (fk_col, parent_df, parent_key) in enumerate(references):
         alias = f"_ref_parent_{idx}"
@@ -65,14 +65,13 @@ def apply_referential_checks(
     return result
 
 
-def lit_false():
-    from pyspark.sql.functions import lit
-
-    return lit(False)
+def apply_no_referential_check(df: DataFrame) -> DataFrame:
+    """Placeholder for entities with no FK checks."""
+    return df.withColumn("_failed_referential", lit(False))
 
 
 def apply_logic_type_checks_customers(df: DataFrame) -> DataFrame:
-    """Validate signup_date format and positive lifetime_value."""
+    """Validate signup_date format and non-negative lifetime_value."""
     signup_valid = col("signup_date").isNull() | to_date(
         col("signup_date"), "yyyy-MM-dd"
     ).isNotNull()
@@ -88,13 +87,12 @@ def apply_logic_type_checks_customers(df: DataFrame) -> DataFrame:
 
 
 def apply_logic_type_checks_products(df: DataFrame) -> DataFrame:
-    """Validate positive numeric catalog fields."""
-    numeric_fields = ["price", "cost", "stock_quantity", "reorder_level"]
-    condition = lit_false()
-    for field in numeric_fields:
+    """Validate non-negative numeric catalog fields."""
+    condition = None
+    for field in ["price", "cost", "stock_quantity", "reorder_level"]:
         casted = col(field).cast("double")
         field_valid = col(field).isNull() | (casted.isNotNull() & (casted >= 0))
-        condition = condition & field_valid
+        condition = field_valid if condition is None else (condition & field_valid)
 
     return df.withColumn("_failed_logic_type", ~condition)
 
@@ -131,8 +129,3 @@ def apply_logic_type_checks_orders(df: DataFrame) -> DataFrame:
             & total_amount_valid
         ),
     )
-
-
-def apply_no_referential_check(df: DataFrame) -> DataFrame:
-    """Placeholder for entities with no FK checks."""
-    return df.withColumn("_failed_referential", lit_false())

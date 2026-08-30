@@ -13,6 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from pyspark.sql import DataFrame
+from pyspark.sql.functions import col
 
 from quality_checks import (
     apply_completeness_checks,
@@ -74,8 +75,6 @@ def transform_customers() -> tuple[DataFrame, DataFrame]:
 
 
 def main() -> DataFrame:
-    from pyspark.sql.functions import col
-
     _, summary_df = transform_customers()
     return summary_df
 
