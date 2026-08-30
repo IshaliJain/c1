@@ -1,0 +1,58 @@
+---
+description: Databricks Medallion e-commerce pipeline architecture, coding standards, and quality rules
+alwaysApply: true
+---
+
+# Databricks Medallion Data Engineering Rules
+
+## Stack & Environment
+
+- Target Platform: Databricks Community Edition (single-node cluster, PySpark, Spark SQL)
+- Language: Python 3.10+, PySpark SQL, Delta Lake
+- IDE: Cursor (Composer / Agent Mode)
+
+## Core Pipeline Principles
+
+### 1. Medallion Architecture
+
+- **Bronze**: Raw data ingestion, append-only, schema preserved, metadata columns added (`_ingested_at`, `_source_file`).
+- **Silver**: Cleaned data, schema enforcement, NULL handling, data quality flags (`quality_check_result`), deduplication.
+- **Gold**: Business-level aggregations and analytics tables optimized for BI.
+
+### 2. Code Standards
+
+- Use explicit PySpark schemas (`StructType`, `StructField`) instead of implicit schema inference.
+- Write functional, modular PySpark code with clear log outputs.
+- For every script, include inline documentation explaining the rationale and validation steps.
+
+### 3. Quality & Validation Strategy
+
+- Do not drop invalid rows; flag them with clear error codes or metadata columns.
+- Catch 100% of intentional data defects (NULLs, duplicate IDs, missing foreign keys).
+
+## Prohibited Patterns
+
+- Never use pandas DataFrame calls where PySpark DataFrames are required for big data operations.
+- Never hardcode environment credentials or absolute local paths (use DBFS/UC paths like `/dbfs/tmp/` or relative path handling).
+
+## Project Layout
+
+```
+data/                  # Local/generated data (gitignored except .gitkeep)
+src/
+  data_generation/     # Synthetic e-commerce data with intentional defects
+  bronze/              # Raw ingestion layer
+  silver/              # Cleansing and quality checks
+  gold/                # Business aggregations
+  dashboard/           # BI / visualization outputs
+ai-prompts/            # Cursor prompt history and execution artifacts
+```
+
+## Reference Artifacts
+
+When generating code, align with these docs when present:
+
+- `requirements-analysis.md` — functional/non-functional requirements and assumptions
+- `design-notes.md` — Bronze, Silver, Gold, and Dashboard architecture
+- `data-quality-strategy.md` — completeness, uniqueness, referential integrity, type/business checks
+- `data-model.md` / `spec.md` — explicit schemas and contracts
