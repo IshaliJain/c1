@@ -67,7 +67,7 @@ def get_spark() -> SparkSession:
 def resolve_layer_paths(layer: str, entity: str) -> str:
     """Resolve Delta path for bronze, silver, or quality_summary."""
     if is_databricks_runtime():
-        base = "/dbfs/tmp/databricks-medallion-pipeline"
+        base = "/Workspace/Users/ishali.jain@tothenew.com/c1"
     else:
         base = str(project_root() / "data" / "delta")
 

@@ -90,7 +90,7 @@ def resolve_paths(entity: str) -> tuple[str, str]:
       target: /dbfs/tmp/databricks-medallion-pipeline/bronze/{entity}
     """
     if is_databricks_runtime():
-        base = "/dbfs/tmp/databricks-medallion-pipeline"
+        base = "/Workspace/Users/ishali.jain@tothenew.com/c1"
         source_path = f"{base}/data/{entity}.csv"
         target_path = f"{base}/bronze/{entity}"
     else:
@@ -126,7 +126,7 @@ def ingest_to_bronze(
 
     bronze_df: DataFrame = df.withColumn(
         "_ingestion_timestamp", current_timestamp()
-    ).withColumn("_source_file", input_file_name())
+    ).withColumn("_source_file", col("_metadata.file_path"))
 
     row_count = bronze_df.count()
     logger.info("  Rows read from source: %d", row_count)

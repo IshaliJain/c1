@@ -16,7 +16,11 @@ import logging
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+except NameError:
+    # In Databricks, __file__ is not defined; use current working directory
+    sys.path.insert(0, str(Path.cwd()))
 
 import importlib
 

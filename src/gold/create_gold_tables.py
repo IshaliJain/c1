@@ -16,7 +16,11 @@ import logging
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+try:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+except NameError:
+    # In Databricks, __file__ is not defined; use current working directory
+    sys.path.insert(0, str(Path.cwd()))
 
 from gold_common import get_spark, register_silver_views, write_gold_table
 
@@ -35,7 +39,11 @@ GOLD_QUERIES: list[tuple[str, str]] = [
 
 
 def _gold_dir() -> Path:
-    return Path(__file__).resolve().parent
+    try:
+        return Path(__file__).resolve().parent
+    except NameError:
+        # In Databricks, __file__ is not defined; use current working directory
+        return Path.cwd()
 
 
 def _read_sql(filename: str) -> str:
