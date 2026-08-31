@@ -1,0 +1,701 @@
+defect_id,entity,primary_key_value,category,error_code,field_name,defect_description,injected_value
+1,products,PROD-00078,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00001
+2,products,PROD-00005,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00002
+3,products,PROD-00112,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00003
+4,products,PROD-00259,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00004
+5,products,PROD-00234,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00005
+6,products,PROD-00192,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00006
+7,products,PROD-00031,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00007
+8,products,PROD-00317,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00008
+9,products,PROD-00327,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00009
+10,products,PROD-00342,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00010
+11,products,PROD-00479,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00011
+12,products,PROD-00316,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00012
+13,products,PROD-00468,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00013
+14,products,PROD-00248,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00014
+15,products,PROD-00338,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00015
+16,products,PROD-00250,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00016
+17,products,PROD-00009,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00017
+18,products,PROD-00004,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00018
+19,products,PROD-00273,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00019
+20,products,PROD-00283,Uniqueness,UNIQ_003,product_id,Duplicate product_id,PROD-00020
+21,products,PROD-00218,Completeness,COMP_004,product_name,Empty product_name,
+22,products,PROD-00010,Completeness,COMP_004,product_name,Empty product_name,
+23,products,PROD-00012,Completeness,COMP_004,product_name,Empty product_name,
+24,products,PROD-00285,Completeness,COMP_004,product_name,Empty product_name,
+25,products,PROD-00388,Completeness,COMP_004,product_name,Empty product_name,
+26,products,PROD-00147,Completeness,COMP_004,product_name,Empty product_name,
+27,products,PROD-00288,Completeness,COMP_004,product_name,Empty product_name,
+28,products,PROD-00153,Completeness,COMP_004,product_name,Empty product_name,
+29,products,PROD-00269,Completeness,COMP_004,product_name,Empty product_name,
+30,products,PROD-00435,Completeness,COMP_004,product_name,Empty product_name,
+31,products,PROD-00376,Completeness,COMP_004,product_name,Empty product_name,
+32,products,PROD-00364,Completeness,COMP_004,product_name,Empty product_name,
+33,products,PROD-00228,Completeness,COMP_004,product_name,Empty product_name,
+34,products,PROD-00431,Completeness,COMP_004,product_name,Empty product_name,
+35,products,PROD-00486,Completeness,COMP_004,product_name,Empty product_name,
+36,products,PROD-00097,Completeness,COMP_004,product_name,Empty product_name,
+37,products,PROD-00059,Completeness,COMP_004,product_name,Empty product_name,
+38,products,PROD-00491,Completeness,COMP_004,product_name,Empty product_name,
+39,products,PROD-00054,Completeness,COMP_004,product_name,Empty product_name,
+40,products,PROD-00281,Completeness,COMP_004,product_name,Empty product_name,
+41,products,PROD-00086,Logic & Type,BIZ_001,price,Negative product price,-5.15
+42,products,PROD-00135,Logic & Type,BIZ_001,price,Negative product price,-175.7
+43,products,PROD-00109,Logic & Type,BIZ_001,price,Negative product price,-484.19
+44,products,PROD-00349,Logic & Type,BIZ_001,price,Negative product price,-297.77
+45,products,PROD-00296,Logic & Type,BIZ_001,price,Negative product price,-311.79
+46,products,PROD-00141,Logic & Type,BIZ_001,price,Negative product price,-262.47
+47,products,PROD-00454,Logic & Type,BIZ_001,price,Negative product price,-182.26
+48,products,PROD-00196,Logic & Type,BIZ_001,price,Negative product price,-149.28
+49,products,PROD-00149,Logic & Type,BIZ_001,price,Negative product price,-458.74
+50,products,PROD-00444,Logic & Type,BIZ_001,price,Negative product price,-78.18
+51,products,PROD-00219,Logic & Type,BIZ_001,price,Negative product price,-178.19
+52,products,PROD-00047,Logic & Type,BIZ_001,price,Negative product price,-334.7
+53,products,PROD-00206,Logic & Type,BIZ_001,price,Negative product price,-12.31
+54,products,PROD-00223,Logic & Type,BIZ_001,price,Negative product price,-14.05
+55,products,PROD-00255,Logic & Type,BIZ_001,price,Negative product price,-53.5
+56,products,PROD-00318,Logic & Type,BIZ_001,price,Negative product price,-41.34
+57,products,PROD-00136,Logic & Type,BIZ_001,price,Negative product price,-385.35
+58,products,PROD-00391,Logic & Type,BIZ_001,price,Negative product price,-50.26
+59,products,PROD-00127,Logic & Type,BIZ_001,price,Negative product price,-154.55
+60,products,PROD-00167,Logic & Type,BIZ_001,price,Negative product price,-217.17
+61,products,PROD-00384,Logic & Type,BIZ_001,price,Negative product price,-364.72
+62,products,PROD-00460,Logic & Type,BIZ_001,price,Negative product price,-38.84
+63,products,PROD-00472,Logic & Type,BIZ_001,price,Negative product price,-158.47
+64,products,PROD-00048,Logic & Type,BIZ_001,price,Negative product price,-360.09
+65,products,PROD-00367,Logic & Type,BIZ_001,price,Negative product price,-229.03
+66,customers,CUST-09078,Completeness,COMP_002,email,NULL email,
+67,customers,CUST-08639,Completeness,COMP_002,email,NULL email,
+68,customers,CUST-03059,Completeness,COMP_002,email,NULL email,
+69,customers,CUST-08369,Completeness,COMP_002,email,NULL email,
+70,customers,CUST-07729,Completeness,COMP_002,email,NULL email,
+71,customers,CUST-02603,Completeness,COMP_002,email,NULL email,
+72,customers,CUST-00117,Completeness,COMP_002,email,NULL email,
+73,customers,CUST-04293,Completeness,COMP_002,email,NULL email,
+74,customers,CUST-07232,Completeness,COMP_002,email,NULL email,
+75,customers,CUST-06500,Completeness,COMP_002,email,NULL email,
+76,customers,CUST-07747,Completeness,COMP_002,email,NULL email,
+77,customers,CUST-07130,Completeness,COMP_002,email,NULL email,
+78,customers,CUST-06221,Completeness,COMP_002,email,NULL email,
+79,customers,CUST-06208,Completeness,COMP_002,email,NULL email,
+80,customers,CUST-00726,Completeness,COMP_002,email,NULL email,
+81,customers,CUST-08721,Completeness,COMP_002,email,NULL email,
+82,customers,CUST-02106,Completeness,COMP_002,email,NULL email,
+83,customers,CUST-08853,Completeness,COMP_002,email,NULL email,
+84,customers,CUST-08946,Completeness,COMP_002,email,NULL email,
+85,customers,CUST-08113,Completeness,COMP_002,email,NULL email,
+86,customers,CUST-04903,Completeness,COMP_002,email,NULL email,
+87,customers,CUST-05259,Completeness,COMP_002,email,NULL email,
+88,customers,CUST-08202,Completeness,COMP_002,email,NULL email,
+89,customers,CUST-07320,Completeness,COMP_002,email,NULL email,
+90,customers,CUST-01295,Completeness,COMP_002,email,NULL email,
+91,customers,CUST-02120,Completeness,COMP_002,email,NULL email,
+92,customers,CUST-00912,Completeness,COMP_002,email,NULL email,
+93,customers,CUST-07744,Completeness,COMP_002,email,NULL email,
+94,customers,CUST-05135,Completeness,COMP_002,email,NULL email,
+95,customers,CUST-03402,Completeness,COMP_002,email,NULL email,
+96,customers,CUST-01184,Completeness,COMP_002,email,NULL email,
+97,customers,CUST-03525,Completeness,COMP_002,email,NULL email,
+98,customers,CUST-06391,Completeness,COMP_002,email,NULL email,
+99,customers,CUST-09101,Completeness,COMP_002,email,NULL email,
+100,customers,CUST-05897,Completeness,COMP_002,email,NULL email,
+101,customers,CUST-09899,Completeness,COMP_002,email,NULL email,
+102,customers,CUST-03107,Completeness,COMP_002,email,NULL email,
+103,customers,CUST-01684,Completeness,COMP_002,email,NULL email,
+104,customers,CUST-06086,Completeness,COMP_002,email,NULL email,
+105,customers,CUST-02233,Completeness,COMP_002,email,NULL email,
+106,customers,CUST-06491,Completeness,COMP_002,email,NULL email,
+107,customers,CUST-02104,Completeness,COMP_002,email,NULL email,
+108,customers,CUST-01562,Completeness,COMP_002,email,NULL email,
+109,customers,CUST-00565,Completeness,COMP_002,email,NULL email,
+110,customers,CUST-07877,Completeness,COMP_002,email,NULL email,
+111,customers,CUST-04843,Completeness,COMP_002,email,NULL email,
+112,customers,CUST-01347,Completeness,COMP_002,email,NULL email,
+113,customers,CUST-04210,Completeness,COMP_002,email,NULL email,
+114,customers,CUST-04315,Completeness,COMP_002,email,NULL email,
+115,customers,CUST-03603,Completeness,COMP_002,email,NULL email,
+116,customers,CUST-00063,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00001
+117,customers,CUST-02005,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00002
+118,customers,CUST-00251,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00003
+119,customers,CUST-06382,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00004
+120,customers,CUST-01344,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00005
+121,customers,CUST-04567,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00006
+122,customers,CUST-04711,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00007
+123,customers,CUST-05851,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00008
+124,customers,CUST-02346,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00009
+125,customers,CUST-09730,Uniqueness,UNIQ_001,customer_id,Duplicate customer_id,CUST-00010
+126,customers,CUST-09849,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+127,customers,CUST-06296,Logic & Type,TYPE_002,email,Invalid email format,bad@
+128,customers,CUST-05043,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+129,customers,CUST-05809,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+130,customers,CUST-07604,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+131,customers,CUST-05142,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+132,customers,CUST-04471,Logic & Type,TYPE_002,email,Invalid email format,bad@
+133,customers,CUST-03376,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+134,customers,CUST-03521,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+135,customers,CUST-01139,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+136,customers,CUST-09811,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+137,customers,CUST-07895,Logic & Type,TYPE_002,email,Invalid email format,bad@
+138,customers,CUST-01596,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+139,customers,CUST-02020,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+140,customers,CUST-05973,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+141,customers,CUST-03740,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+142,customers,CUST-03745,Logic & Type,TYPE_002,email,Invalid email format,bad@
+143,customers,CUST-04006,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+144,customers,CUST-04560,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+145,customers,CUST-09572,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+146,customers,CUST-07433,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+147,customers,CUST-02717,Logic & Type,TYPE_002,email,Invalid email format,bad@
+148,customers,CUST-07123,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+149,customers,CUST-07703,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+150,customers,CUST-00470,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+151,customers,CUST-01522,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+152,customers,CUST-00416,Logic & Type,TYPE_002,email,Invalid email format,bad@
+153,customers,CUST-00754,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+154,customers,CUST-03397,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+155,customers,CUST-04988,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+156,customers,CUST-03732,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+157,customers,CUST-04855,Logic & Type,TYPE_002,email,Invalid email format,bad@
+158,customers,CUST-04972,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+159,customers,CUST-09886,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+160,customers,CUST-09884,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+161,customers,CUST-08182,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+162,customers,CUST-06004,Logic & Type,TYPE_002,email,Invalid email format,bad@
+163,customers,CUST-08949,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+164,customers,CUST-05866,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+165,customers,CUST-09094,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+166,customers,CUST-06815,Logic & Type,TYPE_002,email,Invalid email format,not-an-email
+167,customers,CUST-01134,Logic & Type,TYPE_002,email,Invalid email format,bad@
+168,customers,CUST-08749,Logic & Type,TYPE_002,email,Invalid email format,@missing-local.com
+169,customers,CUST-08629,Logic & Type,TYPE_002,email,Invalid email format,spaces in@email.com
+170,customers,CUST-08351,Logic & Type,TYPE_002,email,Invalid email format,nodomain
+171,customers,CUST-01529,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2024-13-45
+172,customers,CUST-07884,Logic & Type,TYPE_005,signup_date,Invalid signup_date,not-a-date
+173,customers,CUST-08473,Logic & Type,TYPE_005,signup_date,Invalid signup_date,32/01/2020
+174,customers,CUST-06681,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2020-02-30
+175,customers,CUST-00888,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2024-13-45
+176,customers,CUST-02168,Logic & Type,TYPE_005,signup_date,Invalid signup_date,not-a-date
+177,customers,CUST-01914,Logic & Type,TYPE_005,signup_date,Invalid signup_date,32/01/2020
+178,customers,CUST-06065,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2020-02-30
+179,customers,CUST-09481,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2024-13-45
+180,customers,CUST-09780,Logic & Type,TYPE_005,signup_date,Invalid signup_date,not-a-date
+181,customers,CUST-02541,Logic & Type,TYPE_005,signup_date,Invalid signup_date,32/01/2020
+182,customers,CUST-08264,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2020-02-30
+183,customers,CUST-04222,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2024-13-45
+184,customers,CUST-03597,Logic & Type,TYPE_005,signup_date,Invalid signup_date,not-a-date
+185,customers,CUST-07553,Logic & Type,TYPE_005,signup_date,Invalid signup_date,32/01/2020
+186,customers,CUST-07236,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2020-02-30
+187,customers,CUST-03634,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2024-13-45
+188,customers,CUST-08526,Logic & Type,TYPE_005,signup_date,Invalid signup_date,not-a-date
+189,customers,CUST-02114,Logic & Type,TYPE_005,signup_date,Invalid signup_date,32/01/2020
+190,customers,CUST-08130,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2020-02-30
+191,customers,CUST-04774,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2024-13-45
+192,customers,CUST-09657,Logic & Type,TYPE_005,signup_date,Invalid signup_date,not-a-date
+193,customers,CUST-00745,Logic & Type,TYPE_005,signup_date,Invalid signup_date,32/01/2020
+194,customers,CUST-03485,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2020-02-30
+195,customers,CUST-03548,Logic & Type,TYPE_005,signup_date,Invalid signup_date,2024-13-45
+196,customers,CUST-01949,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-2222.68
+197,customers,CUST-02659,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-3452.04
+198,customers,CUST-02778,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-2642.48
+199,customers,CUST-03087,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-708.35
+200,customers,CUST-03804,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-3721.06
+201,customers,CUST-09995,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-2705.25
+202,customers,CUST-05337,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-3894.32
+203,customers,CUST-04382,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-3075.41
+204,customers,CUST-09242,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-702.72
+205,customers,CUST-00678,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-90.91
+206,customers,CUST-07283,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-3234.09
+207,customers,CUST-00228,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-4937.4
+208,customers,CUST-04809,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-1639.62
+209,customers,CUST-07473,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-2754.05
+210,customers,CUST-03428,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-189.19
+211,customers,CUST-01951,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-4303.89
+212,customers,CUST-05184,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-726.82
+213,customers,CUST-08720,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-2252.43
+214,customers,CUST-03624,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-4226.88
+215,customers,CUST-06578,Logic & Type,BIZ_001,lifetime_value,Negative lifetime_value,-673.59
+216,orders,ORD-067621,Completeness,COMP_007,customer_id,NULL customer_id,
+217,orders,ORD-029955,Completeness,COMP_007,customer_id,NULL customer_id,
+218,orders,ORD-029364,Completeness,COMP_007,customer_id,NULL customer_id,
+219,orders,ORD-060751,Completeness,COMP_007,customer_id,NULL customer_id,
+220,orders,ORD-085336,Completeness,COMP_007,customer_id,NULL customer_id,
+221,orders,ORD-022001,Completeness,COMP_007,customer_id,NULL customer_id,
+222,orders,ORD-000094,Completeness,COMP_007,customer_id,NULL customer_id,
+223,orders,ORD-063652,Completeness,COMP_007,customer_id,NULL customer_id,
+224,orders,ORD-064080,Completeness,COMP_007,customer_id,NULL customer_id,
+225,orders,ORD-051256,Completeness,COMP_007,customer_id,NULL customer_id,
+226,orders,ORD-078741,Completeness,COMP_007,customer_id,NULL customer_id,
+227,orders,ORD-029006,Completeness,COMP_007,customer_id,NULL customer_id,
+228,orders,ORD-080889,Completeness,COMP_007,customer_id,NULL customer_id,
+229,orders,ORD-073716,Completeness,COMP_007,customer_id,NULL customer_id,
+230,orders,ORD-063806,Completeness,COMP_007,customer_id,NULL customer_id,
+231,orders,ORD-018231,Completeness,COMP_007,customer_id,NULL customer_id,
+232,orders,ORD-097625,Completeness,COMP_007,customer_id,NULL customer_id,
+233,orders,ORD-033199,Completeness,COMP_007,customer_id,NULL customer_id,
+234,orders,ORD-007920,Completeness,COMP_007,customer_id,NULL customer_id,
+235,orders,ORD-095350,Completeness,COMP_007,customer_id,NULL customer_id,
+236,orders,ORD-057963,Completeness,COMP_007,customer_id,NULL customer_id,
+237,orders,ORD-075134,Completeness,COMP_007,customer_id,NULL customer_id,
+238,orders,ORD-070181,Completeness,COMP_007,customer_id,NULL customer_id,
+239,orders,ORD-089380,Completeness,COMP_007,customer_id,NULL customer_id,
+240,orders,ORD-099242,Completeness,COMP_007,customer_id,NULL customer_id,
+241,orders,ORD-074729,Completeness,COMP_007,customer_id,NULL customer_id,
+242,orders,ORD-082037,Completeness,COMP_007,customer_id,NULL customer_id,
+243,orders,ORD-025214,Completeness,COMP_007,customer_id,NULL customer_id,
+244,orders,ORD-008539,Completeness,COMP_007,customer_id,NULL customer_id,
+245,orders,ORD-014786,Completeness,COMP_007,customer_id,NULL customer_id,
+246,orders,ORD-052681,Completeness,COMP_007,customer_id,NULL customer_id,
+247,orders,ORD-054386,Completeness,COMP_007,customer_id,NULL customer_id,
+248,orders,ORD-066202,Completeness,COMP_007,customer_id,NULL customer_id,
+249,orders,ORD-016115,Completeness,COMP_007,customer_id,NULL customer_id,
+250,orders,ORD-074847,Completeness,COMP_007,customer_id,NULL customer_id,
+251,orders,ORD-099314,Completeness,COMP_007,customer_id,NULL customer_id,
+252,orders,ORD-010365,Completeness,COMP_007,customer_id,NULL customer_id,
+253,orders,ORD-011561,Completeness,COMP_007,customer_id,NULL customer_id,
+254,orders,ORD-006404,Completeness,COMP_007,customer_id,NULL customer_id,
+255,orders,ORD-031471,Completeness,COMP_007,customer_id,NULL customer_id,
+256,orders,ORD-098322,Completeness,COMP_007,customer_id,NULL customer_id,
+257,orders,ORD-026480,Completeness,COMP_007,customer_id,NULL customer_id,
+258,orders,ORD-090922,Completeness,COMP_007,customer_id,NULL customer_id,
+259,orders,ORD-054005,Completeness,COMP_007,customer_id,NULL customer_id,
+260,orders,ORD-008414,Completeness,COMP_007,customer_id,NULL customer_id,
+261,orders,ORD-078000,Completeness,COMP_007,customer_id,NULL customer_id,
+262,orders,ORD-014987,Completeness,COMP_007,customer_id,NULL customer_id,
+263,orders,ORD-048058,Completeness,COMP_007,customer_id,NULL customer_id,
+264,orders,ORD-089948,Completeness,COMP_007,customer_id,NULL customer_id,
+265,orders,ORD-083110,Completeness,COMP_007,customer_id,NULL customer_id,
+266,orders,ORD-034110,Completeness,COMP_007,customer_id,NULL customer_id,
+267,orders,ORD-083077,Completeness,COMP_007,customer_id,NULL customer_id,
+268,orders,ORD-014754,Completeness,COMP_007,customer_id,NULL customer_id,
+269,orders,ORD-068623,Completeness,COMP_007,customer_id,NULL customer_id,
+270,orders,ORD-070193,Completeness,COMP_007,customer_id,NULL customer_id,
+271,orders,ORD-080515,Completeness,COMP_007,customer_id,NULL customer_id,
+272,orders,ORD-082236,Completeness,COMP_007,customer_id,NULL customer_id,
+273,orders,ORD-056540,Completeness,COMP_007,customer_id,NULL customer_id,
+274,orders,ORD-078127,Completeness,COMP_007,customer_id,NULL customer_id,
+275,orders,ORD-051694,Completeness,COMP_007,customer_id,NULL customer_id,
+276,orders,ORD-093996,Completeness,COMP_007,customer_id,NULL customer_id,
+277,orders,ORD-037304,Completeness,COMP_007,customer_id,NULL customer_id,
+278,orders,ORD-089381,Completeness,COMP_007,customer_id,NULL customer_id,
+279,orders,ORD-026069,Completeness,COMP_007,customer_id,NULL customer_id,
+280,orders,ORD-013178,Completeness,COMP_007,customer_id,NULL customer_id,
+281,orders,ORD-054375,Completeness,COMP_007,customer_id,NULL customer_id,
+282,orders,ORD-034303,Completeness,COMP_007,customer_id,NULL customer_id,
+283,orders,ORD-095080,Completeness,COMP_007,customer_id,NULL customer_id,
+284,orders,ORD-030966,Completeness,COMP_007,customer_id,NULL customer_id,
+285,orders,ORD-007575,Completeness,COMP_007,customer_id,NULL customer_id,
+286,orders,ORD-010784,Completeness,COMP_007,customer_id,NULL customer_id,
+287,orders,ORD-081920,Completeness,COMP_007,customer_id,NULL customer_id,
+288,orders,ORD-060605,Completeness,COMP_007,customer_id,NULL customer_id,
+289,orders,ORD-067153,Completeness,COMP_007,customer_id,NULL customer_id,
+290,orders,ORD-078473,Completeness,COMP_007,customer_id,NULL customer_id,
+291,orders,ORD-086627,Completeness,COMP_007,customer_id,NULL customer_id,
+292,orders,ORD-007085,Completeness,COMP_007,customer_id,NULL customer_id,
+293,orders,ORD-072586,Completeness,COMP_007,customer_id,NULL customer_id,
+294,orders,ORD-029183,Completeness,COMP_007,customer_id,NULL customer_id,
+295,orders,ORD-060873,Completeness,COMP_007,customer_id,NULL customer_id,
+296,orders,ORD-090452,Completeness,COMP_007,customer_id,NULL customer_id,
+297,orders,ORD-075778,Completeness,COMP_007,customer_id,NULL customer_id,
+298,orders,ORD-088045,Completeness,COMP_007,customer_id,NULL customer_id,
+299,orders,ORD-080864,Completeness,COMP_007,customer_id,NULL customer_id,
+300,orders,ORD-091420,Completeness,COMP_007,customer_id,NULL customer_id,
+301,orders,ORD-056090,Completeness,COMP_007,customer_id,NULL customer_id,
+302,orders,ORD-051327,Completeness,COMP_007,customer_id,NULL customer_id,
+303,orders,ORD-072444,Completeness,COMP_007,customer_id,NULL customer_id,
+304,orders,ORD-040621,Completeness,COMP_007,customer_id,NULL customer_id,
+305,orders,ORD-067890,Completeness,COMP_007,customer_id,NULL customer_id,
+306,orders,ORD-087211,Completeness,COMP_007,customer_id,NULL customer_id,
+307,orders,ORD-020035,Completeness,COMP_007,customer_id,NULL customer_id,
+308,orders,ORD-081733,Completeness,COMP_007,customer_id,NULL customer_id,
+309,orders,ORD-037328,Completeness,COMP_007,customer_id,NULL customer_id,
+310,orders,ORD-095494,Completeness,COMP_007,customer_id,NULL customer_id,
+311,orders,ORD-027276,Completeness,COMP_007,customer_id,NULL customer_id,
+312,orders,ORD-042019,Completeness,COMP_007,customer_id,NULL customer_id,
+313,orders,ORD-008259,Completeness,COMP_007,customer_id,NULL customer_id,
+314,orders,ORD-001114,Completeness,COMP_007,customer_id,NULL customer_id,
+315,orders,ORD-008548,Completeness,COMP_007,customer_id,NULL customer_id,
+316,orders,ORD-024479,Completeness,COMP_003,product_id,NULL product_id,
+317,orders,ORD-018901,Completeness,COMP_003,product_id,NULL product_id,
+318,orders,ORD-002337,Completeness,COMP_003,product_id,NULL product_id,
+319,orders,ORD-041036,Completeness,COMP_003,product_id,NULL product_id,
+320,orders,ORD-000616,Completeness,COMP_003,product_id,NULL product_id,
+321,orders,ORD-011730,Completeness,COMP_003,product_id,NULL product_id,
+322,orders,ORD-057817,Completeness,COMP_003,product_id,NULL product_id,
+323,orders,ORD-096421,Completeness,COMP_003,product_id,NULL product_id,
+324,orders,ORD-054814,Completeness,COMP_003,product_id,NULL product_id,
+325,orders,ORD-044187,Completeness,COMP_003,product_id,NULL product_id,
+326,orders,ORD-029880,Completeness,COMP_003,product_id,NULL product_id,
+327,orders,ORD-058100,Completeness,COMP_003,product_id,NULL product_id,
+328,orders,ORD-089001,Completeness,COMP_003,product_id,NULL product_id,
+329,orders,ORD-044813,Completeness,COMP_003,product_id,NULL product_id,
+330,orders,ORD-086135,Completeness,COMP_003,product_id,NULL product_id,
+331,orders,ORD-027546,Completeness,COMP_003,product_id,NULL product_id,
+332,orders,ORD-065936,Completeness,COMP_003,product_id,NULL product_id,
+333,orders,ORD-001889,Completeness,COMP_003,product_id,NULL product_id,
+334,orders,ORD-032460,Completeness,COMP_003,product_id,NULL product_id,
+335,orders,ORD-071927,Completeness,COMP_003,product_id,NULL product_id,
+336,orders,ORD-093820,Completeness,COMP_003,product_id,NULL product_id,
+337,orders,ORD-075019,Completeness,COMP_003,product_id,NULL product_id,
+338,orders,ORD-050227,Completeness,COMP_003,product_id,NULL product_id,
+339,orders,ORD-071745,Completeness,COMP_003,product_id,NULL product_id,
+340,orders,ORD-078526,Completeness,COMP_003,product_id,NULL product_id,
+341,orders,ORD-083812,Completeness,COMP_003,product_id,NULL product_id,
+342,orders,ORD-015620,Completeness,COMP_003,product_id,NULL product_id,
+343,orders,ORD-007978,Completeness,COMP_003,product_id,NULL product_id,
+344,orders,ORD-068938,Completeness,COMP_003,product_id,NULL product_id,
+345,orders,ORD-045081,Completeness,COMP_003,product_id,NULL product_id,
+346,orders,ORD-062643,Completeness,COMP_003,product_id,NULL product_id,
+347,orders,ORD-081322,Completeness,COMP_003,product_id,NULL product_id,
+348,orders,ORD-060934,Completeness,COMP_003,product_id,NULL product_id,
+349,orders,ORD-055598,Completeness,COMP_003,product_id,NULL product_id,
+350,orders,ORD-076250,Completeness,COMP_003,product_id,NULL product_id,
+351,orders,ORD-041850,Completeness,COMP_003,product_id,NULL product_id,
+352,orders,ORD-010827,Completeness,COMP_003,product_id,NULL product_id,
+353,orders,ORD-007479,Completeness,COMP_003,product_id,NULL product_id,
+354,orders,ORD-012178,Completeness,COMP_003,product_id,NULL product_id,
+355,orders,ORD-059764,Completeness,COMP_003,product_id,NULL product_id,
+356,orders,ORD-094407,Completeness,COMP_003,product_id,NULL product_id,
+357,orders,ORD-092355,Completeness,COMP_003,product_id,NULL product_id,
+358,orders,ORD-010230,Completeness,COMP_003,product_id,NULL product_id,
+359,orders,ORD-089467,Completeness,COMP_003,product_id,NULL product_id,
+360,orders,ORD-067105,Completeness,COMP_003,product_id,NULL product_id,
+361,orders,ORD-019316,Completeness,COMP_003,product_id,NULL product_id,
+362,orders,ORD-047545,Completeness,COMP_003,product_id,NULL product_id,
+363,orders,ORD-078197,Completeness,COMP_003,product_id,NULL product_id,
+364,orders,ORD-072791,Completeness,COMP_003,product_id,NULL product_id,
+365,orders,ORD-013676,Completeness,COMP_003,product_id,NULL product_id,
+366,orders,ORD-019394,Completeness,COMP_003,product_id,NULL product_id,
+367,orders,ORD-076637,Completeness,COMP_003,product_id,NULL product_id,
+368,orders,ORD-092215,Completeness,COMP_003,product_id,NULL product_id,
+369,orders,ORD-041686,Completeness,COMP_003,product_id,NULL product_id,
+370,orders,ORD-057798,Completeness,COMP_003,product_id,NULL product_id,
+371,orders,ORD-019662,Completeness,COMP_003,product_id,NULL product_id,
+372,orders,ORD-037775,Completeness,COMP_003,product_id,NULL product_id,
+373,orders,ORD-011312,Completeness,COMP_003,product_id,NULL product_id,
+374,orders,ORD-053036,Completeness,COMP_003,product_id,NULL product_id,
+375,orders,ORD-085836,Completeness,COMP_003,product_id,NULL product_id,
+376,orders,ORD-023253,Completeness,COMP_003,product_id,NULL product_id,
+377,orders,ORD-080869,Completeness,COMP_003,product_id,NULL product_id,
+378,orders,ORD-052947,Completeness,COMP_003,product_id,NULL product_id,
+379,orders,ORD-046110,Completeness,COMP_003,product_id,NULL product_id,
+380,orders,ORD-034329,Completeness,COMP_003,product_id,NULL product_id,
+381,orders,ORD-032042,Completeness,COMP_003,product_id,NULL product_id,
+382,orders,ORD-054309,Completeness,COMP_003,product_id,NULL product_id,
+383,orders,ORD-079009,Completeness,COMP_003,product_id,NULL product_id,
+384,orders,ORD-074723,Completeness,COMP_003,product_id,NULL product_id,
+385,orders,ORD-088256,Completeness,COMP_003,product_id,NULL product_id,
+386,orders,ORD-055258,Completeness,COMP_003,product_id,NULL product_id,
+387,orders,ORD-054789,Completeness,COMP_003,product_id,NULL product_id,
+388,orders,ORD-072951,Completeness,COMP_003,product_id,NULL product_id,
+389,orders,ORD-026243,Completeness,COMP_003,product_id,NULL product_id,
+390,orders,ORD-079604,Completeness,COMP_003,product_id,NULL product_id,
+391,orders,ORD-092070,Completeness,COMP_003,product_id,NULL product_id,
+392,orders,ORD-063511,Completeness,COMP_003,product_id,NULL product_id,
+393,orders,ORD-071262,Completeness,COMP_003,product_id,NULL product_id,
+394,orders,ORD-097414,Completeness,COMP_003,product_id,NULL product_id,
+395,orders,ORD-012920,Completeness,COMP_003,product_id,NULL product_id,
+396,orders,ORD-028087,Completeness,COMP_003,product_id,NULL product_id,
+397,orders,ORD-092804,Completeness,COMP_003,product_id,NULL product_id,
+398,orders,ORD-048178,Completeness,COMP_003,product_id,NULL product_id,
+399,orders,ORD-035432,Completeness,COMP_003,product_id,NULL product_id,
+400,orders,ORD-000154,Completeness,COMP_003,product_id,NULL product_id,
+401,orders,ORD-015032,Completeness,COMP_003,product_id,NULL product_id,
+402,orders,ORD-004555,Completeness,COMP_003,product_id,NULL product_id,
+403,orders,ORD-070171,Completeness,COMP_003,product_id,NULL product_id,
+404,orders,ORD-089428,Completeness,COMP_003,product_id,NULL product_id,
+405,orders,ORD-042812,Completeness,COMP_003,product_id,NULL product_id,
+406,orders,ORD-003789,Completeness,COMP_003,product_id,NULL product_id,
+407,orders,ORD-007440,Completeness,COMP_003,product_id,NULL product_id,
+408,orders,ORD-079695,Completeness,COMP_003,product_id,NULL product_id,
+409,orders,ORD-095742,Completeness,COMP_003,product_id,NULL product_id,
+410,orders,ORD-049013,Completeness,COMP_003,product_id,NULL product_id,
+411,orders,ORD-062033,Completeness,COMP_003,product_id,NULL product_id,
+412,orders,ORD-075827,Completeness,COMP_003,product_id,NULL product_id,
+413,orders,ORD-041637,Completeness,COMP_003,product_id,NULL product_id,
+414,orders,ORD-023977,Completeness,COMP_003,product_id,NULL product_id,
+415,orders,ORD-036237,Completeness,COMP_003,product_id,NULL product_id,
+416,orders,ORD-008464,Completeness,COMP_003,product_id,NULL product_id,
+417,orders,ORD-089049,Completeness,COMP_003,product_id,NULL product_id,
+418,orders,ORD-010378,Completeness,COMP_003,product_id,NULL product_id,
+419,orders,ORD-040752,Completeness,COMP_003,product_id,NULL product_id,
+420,orders,ORD-059648,Completeness,COMP_003,product_id,NULL product_id,
+421,orders,ORD-015088,Completeness,COMP_003,product_id,NULL product_id,
+422,orders,ORD-017184,Completeness,COMP_003,product_id,NULL product_id,
+423,orders,ORD-034463,Completeness,COMP_003,product_id,NULL product_id,
+424,orders,ORD-085908,Completeness,COMP_003,product_id,NULL product_id,
+425,orders,ORD-002148,Completeness,COMP_003,product_id,NULL product_id,
+426,orders,ORD-049001,Completeness,COMP_003,product_id,NULL product_id,
+427,orders,ORD-044866,Completeness,COMP_003,product_id,NULL product_id,
+428,orders,ORD-043321,Completeness,COMP_003,product_id,NULL product_id,
+429,orders,ORD-068530,Completeness,COMP_003,product_id,NULL product_id,
+430,orders,ORD-036282,Completeness,COMP_003,product_id,NULL product_id,
+431,orders,ORD-076501,Completeness,COMP_003,product_id,NULL product_id,
+432,orders,ORD-052097,Completeness,COMP_003,product_id,NULL product_id,
+433,orders,ORD-082428,Completeness,COMP_003,product_id,NULL product_id,
+434,orders,ORD-011071,Completeness,COMP_003,product_id,NULL product_id,
+435,orders,ORD-048471,Completeness,COMP_003,product_id,NULL product_id,
+436,orders,ORD-071299,Completeness,COMP_003,product_id,NULL product_id,
+437,orders,ORD-070379,Completeness,COMP_003,product_id,NULL product_id,
+438,orders,ORD-046098,Completeness,COMP_003,product_id,NULL product_id,
+439,orders,ORD-064402,Completeness,COMP_003,product_id,NULL product_id,
+440,orders,ORD-017749,Completeness,COMP_003,product_id,NULL product_id,
+441,orders,ORD-077499,Completeness,COMP_003,product_id,NULL product_id,
+442,orders,ORD-037307,Completeness,COMP_003,product_id,NULL product_id,
+443,orders,ORD-088706,Completeness,COMP_003,product_id,NULL product_id,
+444,orders,ORD-063259,Completeness,COMP_003,product_id,NULL product_id,
+445,orders,ORD-090871,Completeness,COMP_003,product_id,NULL product_id,
+446,orders,ORD-058023,Completeness,COMP_003,product_id,NULL product_id,
+447,orders,ORD-047676,Completeness,COMP_003,product_id,NULL product_id,
+448,orders,ORD-092434,Completeness,COMP_003,product_id,NULL product_id,
+449,orders,ORD-070065,Completeness,COMP_003,product_id,NULL product_id,
+450,orders,ORD-012164,Completeness,COMP_003,product_id,NULL product_id,
+451,orders,ORD-046000,Completeness,COMP_003,product_id,NULL product_id,
+452,orders,ORD-066629,Completeness,COMP_003,product_id,NULL product_id,
+453,orders,ORD-040969,Completeness,COMP_003,product_id,NULL product_id,
+454,orders,ORD-063756,Completeness,COMP_003,product_id,NULL product_id,
+455,orders,ORD-051194,Completeness,COMP_003,product_id,NULL product_id,
+456,orders,ORD-030926,Completeness,COMP_003,product_id,NULL product_id,
+457,orders,ORD-021982,Completeness,COMP_003,product_id,NULL product_id,
+458,orders,ORD-037957,Completeness,COMP_003,product_id,NULL product_id,
+459,orders,ORD-027068,Completeness,COMP_003,product_id,NULL product_id,
+460,orders,ORD-049431,Completeness,COMP_003,product_id,NULL product_id,
+461,orders,ORD-042154,Completeness,COMP_003,product_id,NULL product_id,
+462,orders,ORD-063910,Completeness,COMP_003,product_id,NULL product_id,
+463,orders,ORD-098617,Completeness,COMP_003,product_id,NULL product_id,
+464,orders,ORD-033724,Completeness,COMP_003,product_id,NULL product_id,
+465,orders,ORD-059240,Completeness,COMP_003,product_id,NULL product_id,
+466,orders,ORD-049720,Completeness,COMP_003,product_id,NULL product_id,
+467,orders,ORD-098697,Completeness,COMP_003,product_id,NULL product_id,
+468,orders,ORD-065807,Completeness,COMP_003,product_id,NULL product_id,
+469,orders,ORD-044923,Completeness,COMP_003,product_id,NULL product_id,
+470,orders,ORD-071239,Completeness,COMP_003,product_id,NULL product_id,
+471,orders,ORD-023810,Completeness,COMP_003,product_id,NULL product_id,
+472,orders,ORD-045166,Completeness,COMP_003,product_id,NULL product_id,
+473,orders,ORD-093282,Completeness,COMP_003,product_id,NULL product_id,
+474,orders,ORD-045239,Completeness,COMP_003,product_id,NULL product_id,
+475,orders,ORD-018122,Completeness,COMP_003,product_id,NULL product_id,
+476,orders,ORD-049968,Completeness,COMP_003,product_id,NULL product_id,
+477,orders,ORD-076103,Completeness,COMP_003,product_id,NULL product_id,
+478,orders,ORD-072483,Completeness,COMP_003,product_id,NULL product_id,
+479,orders,ORD-045389,Completeness,COMP_003,product_id,NULL product_id,
+480,orders,ORD-012193,Completeness,COMP_003,product_id,NULL product_id,
+481,orders,ORD-038591,Completeness,COMP_003,product_id,NULL product_id,
+482,orders,ORD-088347,Completeness,COMP_003,product_id,NULL product_id,
+483,orders,ORD-068249,Completeness,COMP_003,product_id,NULL product_id,
+484,orders,ORD-071692,Completeness,COMP_003,product_id,NULL product_id,
+485,orders,ORD-066668,Completeness,COMP_003,product_id,NULL product_id,
+486,orders,ORD-021321,Completeness,COMP_003,product_id,NULL product_id,
+487,orders,ORD-097087,Completeness,COMP_003,product_id,NULL product_id,
+488,orders,ORD-005577,Completeness,COMP_003,product_id,NULL product_id,
+489,orders,ORD-036082,Completeness,COMP_003,product_id,NULL product_id,
+490,orders,ORD-058492,Completeness,COMP_003,product_id,NULL product_id,
+491,orders,ORD-040574,Completeness,COMP_003,product_id,NULL product_id,
+492,orders,ORD-013355,Completeness,COMP_003,product_id,NULL product_id,
+493,orders,ORD-021618,Completeness,COMP_003,product_id,NULL product_id,
+494,orders,ORD-053663,Completeness,COMP_003,product_id,NULL product_id,
+495,orders,ORD-017452,Completeness,COMP_003,product_id,NULL product_id,
+496,orders,ORD-066894,Completeness,COMP_003,product_id,NULL product_id,
+497,orders,ORD-014874,Completeness,COMP_003,product_id,NULL product_id,
+498,orders,ORD-016354,Completeness,COMP_003,product_id,NULL product_id,
+499,orders,ORD-000106,Completeness,COMP_003,product_id,NULL product_id,
+500,orders,ORD-028477,Completeness,COMP_003,product_id,NULL product_id,
+501,orders,ORD-062910,Completeness,COMP_003,product_id,NULL product_id,
+502,orders,ORD-090793,Completeness,COMP_003,product_id,NULL product_id,
+503,orders,ORD-028084,Completeness,COMP_003,product_id,NULL product_id,
+504,orders,ORD-088155,Completeness,COMP_003,product_id,NULL product_id,
+505,orders,ORD-035335,Completeness,COMP_003,product_id,NULL product_id,
+506,orders,ORD-082290,Completeness,COMP_003,product_id,NULL product_id,
+507,orders,ORD-013961,Completeness,COMP_003,product_id,NULL product_id,
+508,orders,ORD-050539,Completeness,COMP_003,product_id,NULL product_id,
+509,orders,ORD-036479,Completeness,COMP_003,product_id,NULL product_id,
+510,orders,ORD-086909,Completeness,COMP_003,product_id,NULL product_id,
+511,orders,ORD-095428,Completeness,COMP_003,product_id,NULL product_id,
+512,orders,ORD-047739,Completeness,COMP_003,product_id,NULL product_id,
+513,orders,ORD-048196,Completeness,COMP_003,product_id,NULL product_id,
+514,orders,ORD-060519,Completeness,COMP_003,product_id,NULL product_id,
+515,orders,ORD-034909,Completeness,COMP_003,product_id,NULL product_id,
+516,orders,ORD-029876,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-001
+517,orders,ORD-092704,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-002
+518,orders,ORD-058090,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-003
+519,orders,ORD-036137,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-004
+520,orders,ORD-059934,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-005
+521,orders,ORD-068034,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-006
+522,orders,ORD-083542,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-007
+523,orders,ORD-085541,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-008
+524,orders,ORD-040662,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-009
+525,orders,ORD-063868,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-010
+526,orders,ORD-059306,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-011
+527,orders,ORD-031986,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-012
+528,orders,ORD-038185,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-013
+529,orders,ORD-018774,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-014
+530,orders,ORD-044324,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-015
+531,orders,ORD-064997,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-016
+532,orders,ORD-020291,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-017
+533,orders,ORD-056215,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-018
+534,orders,ORD-091584,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-019
+535,orders,ORD-018986,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-020
+536,orders,ORD-035236,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-021
+537,orders,ORD-034595,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-022
+538,orders,ORD-088208,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-023
+539,orders,ORD-009264,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-024
+540,orders,ORD-079141,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-025
+541,orders,ORD-013878,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-026
+542,orders,ORD-080775,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-027
+543,orders,ORD-042642,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-028
+544,orders,ORD-030318,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-029
+545,orders,ORD-095109,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-030
+546,orders,ORD-083314,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-031
+547,orders,ORD-009648,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-032
+548,orders,ORD-021562,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-033
+549,orders,ORD-051519,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-034
+550,orders,ORD-041363,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-035
+551,orders,ORD-023273,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-036
+552,orders,ORD-060296,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-037
+553,orders,ORD-066857,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-038
+554,orders,ORD-066672,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-039
+555,orders,ORD-027699,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-040
+556,orders,ORD-030965,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-041
+557,orders,ORD-054720,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-042
+558,orders,ORD-071102,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-043
+559,orders,ORD-044846,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-044
+560,orders,ORD-022334,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-045
+561,orders,ORD-069435,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-046
+562,orders,ORD-017921,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-047
+563,orders,ORD-033140,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-048
+564,orders,ORD-075843,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-049
+565,orders,ORD-074694,Referential Integrity,REF_001,customer_id,Orphan customer_id,ORPHAN-CUST-050
+566,orders,ORD-084558,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-001
+567,orders,ORD-025215,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-002
+568,orders,ORD-000938,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-003
+569,orders,ORD-097740,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-004
+570,orders,ORD-053397,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-005
+571,orders,ORD-026643,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-006
+572,orders,ORD-035649,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-007
+573,orders,ORD-026913,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-008
+574,orders,ORD-004546,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-009
+575,orders,ORD-074815,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-010
+576,orders,ORD-033012,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-011
+577,orders,ORD-007135,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-012
+578,orders,ORD-072746,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-013
+579,orders,ORD-092052,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-014
+580,orders,ORD-053698,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-015
+581,orders,ORD-064292,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-016
+582,orders,ORD-023581,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-017
+583,orders,ORD-030515,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-018
+584,orders,ORD-040882,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-019
+585,orders,ORD-022553,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-020
+586,orders,ORD-060472,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-021
+587,orders,ORD-093887,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-022
+588,orders,ORD-053422,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-023
+589,orders,ORD-019453,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-024
+590,orders,ORD-051392,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-025
+591,orders,ORD-064128,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-026
+592,orders,ORD-042997,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-027
+593,orders,ORD-048619,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-028
+594,orders,ORD-062427,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-029
+595,orders,ORD-037598,Referential Integrity,REF_003,product_id,Orphan product_id,ORPHAN-PROD-030
+596,orders,ORD-035201,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000001
+597,orders,ORD-042487,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000002
+598,orders,ORD-095817,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000003
+599,orders,ORD-016628,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000004
+600,orders,ORD-023448,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000005
+601,orders,ORD-071785,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000006
+602,orders,ORD-005292,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000007
+603,orders,ORD-093328,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000008
+604,orders,ORD-046164,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000009
+605,orders,ORD-094445,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000010
+606,orders,ORD-072348,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000011
+607,orders,ORD-027930,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000012
+608,orders,ORD-057170,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000013
+609,orders,ORD-002793,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000014
+610,orders,ORD-087463,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000015
+611,orders,ORD-069499,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000016
+612,orders,ORD-046682,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000017
+613,orders,ORD-069890,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000018
+614,orders,ORD-054530,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000019
+615,orders,ORD-002688,Uniqueness,UNIQ_004,order_id,Duplicate order_id,ORD-000020
+616,orders,ORD-004974,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+617,orders,ORD-064051,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+618,orders,ORD-075637,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+619,orders,ORD-085007,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+620,orders,ORD-050597,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+621,orders,ORD-036110,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+622,orders,ORD-030310,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+623,orders,ORD-050423,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+624,orders,ORD-042904,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+625,orders,ORD-018860,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+626,orders,ORD-061473,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+627,orders,ORD-048946,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+628,orders,ORD-084797,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+629,orders,ORD-098302,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+630,orders,ORD-069588,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+631,orders,ORD-087075,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+632,orders,ORD-040238,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+633,orders,ORD-005781,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+634,orders,ORD-063479,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+635,orders,ORD-026332,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+636,orders,ORD-092554,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+637,orders,ORD-080858,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+638,orders,ORD-085044,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+639,orders,ORD-059279,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+640,orders,ORD-034387,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+641,orders,ORD-041066,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+642,orders,ORD-020981,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+643,orders,ORD-006275,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+644,orders,ORD-009646,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+645,orders,ORD-005964,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+646,orders,ORD-083047,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+647,orders,ORD-080441,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+648,orders,ORD-040845,Logic & Type,TYPE_005,order_date,Invalid order_date,2020-02-30
+649,orders,ORD-042771,Logic & Type,TYPE_005,order_date,Invalid order_date,2024-13-45
+650,orders,ORD-002066,Logic & Type,TYPE_005,order_date,Invalid order_date,invalid-date
+651,orders,ORD-082838,Logic & Type,BIZ_002,quantity,Negative quantity,-1
+652,orders,ORD-018222,Logic & Type,BIZ_002,quantity,Negative quantity,-5
+653,orders,ORD-070204,Logic & Type,BIZ_002,quantity,Negative quantity,-8
+654,orders,ORD-077162,Logic & Type,BIZ_002,quantity,Negative quantity,-3
+655,orders,ORD-017008,Logic & Type,BIZ_002,quantity,Negative quantity,-9
+656,orders,ORD-084323,Logic & Type,BIZ_002,quantity,Negative quantity,-1
+657,orders,ORD-044140,Logic & Type,BIZ_002,quantity,Negative quantity,-1
+658,orders,ORD-035517,Logic & Type,BIZ_002,quantity,Negative quantity,-10
+659,orders,ORD-072576,Logic & Type,BIZ_002,quantity,Negative quantity,-3
+660,orders,ORD-032536,Logic & Type,BIZ_002,quantity,Negative quantity,-8
+661,orders,ORD-014220,Logic & Type,BIZ_002,quantity,Negative quantity,-3
+662,orders,ORD-055519,Logic & Type,BIZ_002,quantity,Negative quantity,-3
+663,orders,ORD-042838,Logic & Type,BIZ_002,quantity,Negative quantity,-10
+664,orders,ORD-021571,Logic & Type,BIZ_002,quantity,Negative quantity,-1
+665,orders,ORD-074794,Logic & Type,BIZ_002,quantity,Negative quantity,-9
+666,orders,ORD-060428,Logic & Type,BIZ_002,quantity,Negative quantity,-8
+667,orders,ORD-037573,Logic & Type,BIZ_002,quantity,Negative quantity,-6
+668,orders,ORD-087390,Logic & Type,BIZ_002,quantity,Negative quantity,-10
+669,orders,ORD-066745,Logic & Type,BIZ_002,quantity,Negative quantity,-9
+670,orders,ORD-014979,Logic & Type,BIZ_002,quantity,Negative quantity,-5
+671,orders,ORD-085608,Logic & Type,BIZ_002,quantity,Negative quantity,-1
+672,orders,ORD-075726,Logic & Type,BIZ_002,quantity,Negative quantity,-8
+673,orders,ORD-012185,Logic & Type,BIZ_002,quantity,Negative quantity,-8
+674,orders,ORD-054449,Logic & Type,BIZ_002,quantity,Negative quantity,-7
+675,orders,ORD-070377,Logic & Type,BIZ_002,quantity,Negative quantity,-8
+676,orders,ORD-084888,Logic & Type,BIZ_001,unit_price,Negative unit_price,-217.73
+677,orders,ORD-050764,Logic & Type,BIZ_001,unit_price,Negative unit_price,-89.23
+678,orders,ORD-040914,Logic & Type,BIZ_001,unit_price,Negative unit_price,-170.72
+679,orders,ORD-076978,Logic & Type,BIZ_001,unit_price,Negative unit_price,-393.75
+680,orders,ORD-076463,Logic & Type,BIZ_001,unit_price,Negative unit_price,-203.25
+681,orders,ORD-050366,Logic & Type,BIZ_001,unit_price,Negative unit_price,-61.58
+682,orders,ORD-009532,Logic & Type,BIZ_001,unit_price,Negative unit_price,-341.06
+683,orders,ORD-005434,Logic & Type,BIZ_001,unit_price,Negative unit_price,-147.4
+684,orders,ORD-065259,Logic & Type,BIZ_001,unit_price,Negative unit_price,-286.28
+685,orders,ORD-024127,Logic & Type,BIZ_001,unit_price,Negative unit_price,-25.32
+686,orders,ORD-088283,Logic & Type,BIZ_001,unit_price,Negative unit_price,-327.98
+687,orders,ORD-073884,Logic & Type,BIZ_001,unit_price,Negative unit_price,-269.05
+688,orders,ORD-066542,Logic & Type,BIZ_001,unit_price,Negative unit_price,-403.33
+689,orders,ORD-023927,Logic & Type,BIZ_001,unit_price,Negative unit_price,-333.92
+690,orders,ORD-006138,Logic & Type,BIZ_001,unit_price,Negative unit_price,-44.97
+691,orders,ORD-093786,Logic & Type,BIZ_001,unit_price,Negative unit_price,-88.85
+692,orders,ORD-073124,Logic & Type,BIZ_001,unit_price,Negative unit_price,-468.64
+693,orders,ORD-090294,Logic & Type,BIZ_001,unit_price,Negative unit_price,-363.99
+694,orders,ORD-075893,Logic & Type,BIZ_001,unit_price,Negative unit_price,-115.8
+695,orders,ORD-030131,Logic & Type,BIZ_001,unit_price,Negative unit_price,-448.6
+696,orders,ORD-043258,Logic & Type,BIZ_001,unit_price,Negative unit_price,-68.1
+697,orders,ORD-086552,Logic & Type,BIZ_001,unit_price,Negative unit_price,-89.5
+698,orders,ORD-060222,Logic & Type,BIZ_001,unit_price,Negative unit_price,-154.58
+699,orders,ORD-098419,Logic & Type,BIZ_001,unit_price,Negative unit_price,-374.95
+700,orders,ORD-015450,Logic & Type,BIZ_001,unit_price,Negative unit_price,-324.85
