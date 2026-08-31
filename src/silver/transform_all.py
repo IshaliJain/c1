@@ -47,6 +47,11 @@ def main() -> None:
     )
 
     write_quality_summary([customers_summary, products_summary, orders_summary])
+
+    logger.info("Generating quality report...")
+    import generate_quality_report
+    generate_quality_report.generate_quality_report()
+
     logger.info("Silver transform_all complete")
 
 

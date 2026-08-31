@@ -43,7 +43,7 @@ def transform_products() -> tuple[DataFrame, DataFrame]:
     spark = get_spark()
     bronze_df = read_bronze(spark, ENTITY)
 
-    df = apply_completeness_checks(bronze_df, ["product_id"])
+    df = apply_completeness_checks(bronze_df, ["product_id", "product_name"])
     df = apply_uniqueness_check(df, "product_id")
     df = apply_no_referential_check(df)
     df = apply_logic_type_checks_products(df)

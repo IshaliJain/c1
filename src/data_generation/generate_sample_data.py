@@ -4,11 +4,8 @@ Generate synthetic e-commerce CSV datasets with intentional data quality defects
 Uses Faker + pandas for local generation, then validates output with PySpark
 to confirm Databricks-compatible ingestion.
 
-AI rationale:
-  - pandas/Faker are appropriate for bounded local generation (~110k rows).
-  - PySpark validation ensures CSVs are readable with explicit schemas before
-    Bronze ingestion.
-  - Defects are injected deterministically via a fixed seed for reproducibility.
+Injects exactly 700 intentional defect instances across four quality dimensions
+and writes a defect manifest to data/manifest/defect_manifest.csv.
 """
 
 from __future__ import annotations
@@ -16,7 +13,7 @@ from __future__ import annotations
 import argparse
 import logging
 import random
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -27,36 +24,50 @@ from faker import Faker
 # ---------------------------------------------------------------------------
 RANDOM_SEED = 42
 FAKER_SEED = 42
+TARGET_DEFECT_COUNT = 700
 
 NUM_CUSTOMERS = 10_000
 NUM_ORDERS = 100_000
 NUM_PRODUCTS = 500
 
-# Intentional defect counts
+# Completeness defects (370 total)
 NULL_EMAILS = 50
-DUPLICATE_CUSTOMER_IDS = 10
 NULL_ORDER_CUSTOMER_IDS = 100
 NULL_ORDER_PRODUCT_IDS = 200
+EMPTY_PRODUCT_NAMES = 20
+
+# Uniqueness defects (50 total)
+DUPLICATE_CUSTOMER_IDS = 10
+DUPLICATE_ORDER_IDS = 20
+DUPLICATE_PRODUCT_IDS = 20
+
+# Referential integrity defects (80 total)
 ORPHAN_CUSTOMER_IDS = 50
 ORPHAN_PRODUCT_IDS = 30
-DUPLICATE_ORDER_IDS = 20
+
+# Logic & type / business rule defects (200 total)
+INVALID_EMAILS = 45
+INVALID_SIGNUP_DATES = 25
+NEGATIVE_LIFETIME_VALUES = 20
+NEGATIVE_PRODUCT_PRICES = 25
+NEGATIVE_ORDER_QUANTITIES = 25
+NEGATIVE_UNIT_PRICES = 25
+INVALID_ORDER_DATES = 35
+
+# Removed INVALID_ORDER_STATUSES to keep total at exactly 700
 
 CUSTOMER_SEGMENTS = ["Bronze", "Silver", "Gold", "Platinum"]
 PRODUCT_CATEGORIES = [
-    "Electronics",
-    "Clothing",
-    "Home & Garden",
-    "Sports",
-    "Books",
-    "Beauty",
-    "Toys",
-    "Food",
+    "Electronics", "Clothing", "Home & Garden", "Sports",
+    "Books", "Beauty", "Toys", "Food",
 ]
 ORDER_STATUSES = ["Pending", "Processing", "Shipped", "Delivered", "Cancelled", "Returned"]
 COUNTRIES = ["US", "UK", "CA", "DE", "FR", "IN", "AU", "JP", "BR", "MX"]
 
 ORPHAN_CUSTOMER_PREFIX = "ORPHAN-CUST"
 ORPHAN_PRODUCT_PREFIX = "ORPHAN-PROD"
+
+DEFECT_MANIFEST: list[dict[str, str]] = []
 
 logging.basicConfig(
     level=logging.INFO,
@@ -69,8 +80,6 @@ def _project_root() -> Path:
     try:
         return Path(__file__).resolve().parents[2]
     except NameError:
-        # In Databricks, __file__ is not defined; use current working directory
-        # Assumes script is in src/data_generation/, so go up 2 levels
         return Path.cwd().parents[1]
 
 
@@ -85,8 +94,38 @@ def _random_date(fake: Faker, start: datetime, end: datetime) -> str:
     return fake.date_between(start_date=start, end_date=end).isoformat()
 
 
+def _record_defect(
+    entity: str,
+    primary_key: str,
+    category: str,
+    error_code: str,
+    field_name: str,
+    description: str,
+    injected_value: str,
+) -> None:
+    DEFECT_MANIFEST.append(
+        {
+            "defect_id": str(len(DEFECT_MANIFEST) + 1),
+            "entity": entity,
+            "primary_key_value": primary_key,
+            "category": category,
+            "error_code": error_code,
+            "field_name": field_name,
+            "defect_description": description,
+            "injected_value": injected_value,
+        }
+    )
+
+
+def _pick_indices(df: pd.DataFrame, count: int, used: set[int]) -> list[int]:
+    available = [i for i in range(len(df)) if i not in used]
+    chosen = random.sample(available, count)
+    used.update(chosen)
+    return chosen
+
+
 def generate_products(fake: Faker) -> pd.DataFrame:
-    """Generate clean product catalog (no intentional defects in this phase)."""
+    """Generate product catalog with intentional uniqueness and logic defects."""
     rows = []
     for i in range(1, NUM_PRODUCTS + 1):
         price = round(random.uniform(5.0, 500.0), 2)
@@ -102,11 +141,45 @@ def generate_products(fake: Faker) -> pd.DataFrame:
                 "reorder_level": random.randint(10, 100),
             }
         )
-    return pd.DataFrame(rows)
+
+    df = pd.DataFrame(rows)
+    used: set[int] = set()
+
+    # Uniqueness: duplicate product_ids
+    dup_source_ids = df.loc[: DUPLICATE_PRODUCT_IDS - 1, "product_id"].tolist()
+    for idx, source_id in zip(
+        _pick_indices(df, DUPLICATE_PRODUCT_IDS, used), dup_source_ids
+    ):
+        pk = df.at[idx, "product_id"]
+        df.at[idx, "product_id"] = source_id
+        _record_defect(
+            "products", pk, "Uniqueness", "UNIQ_003", "product_id",
+            "Duplicate product_id", source_id,
+        )
+
+    # Completeness: empty product_name
+    for idx in _pick_indices(df, EMPTY_PRODUCT_NAMES, used):
+        pk = df.at[idx, "product_id"]
+        df.at[idx, "product_name"] = ""
+        _record_defect(
+            "products", pk, "Completeness", "COMP_004", "product_name",
+            "Empty product_name", "",
+        )
+
+    # Logic: negative prices
+    for idx in _pick_indices(df, NEGATIVE_PRODUCT_PRICES, used):
+        pk = df.at[idx, "product_id"]
+        df.at[idx, "price"] = round(random.uniform(-500.0, -1.0), 2)
+        _record_defect(
+            "products", pk, "Logic & Type", "BIZ_001", "price",
+            "Negative product price", str(df.at[idx, "price"]),
+        )
+
+    return df
 
 
 def generate_customers(fake: Faker) -> pd.DataFrame:
-    """Generate customer records, then inject completeness and uniqueness defects."""
+    """Generate customer records with completeness, uniqueness, and logic defects."""
     rows = []
     signup_start = datetime(2018, 1, 1)
     signup_end = datetime(2025, 12, 31)
@@ -125,18 +198,54 @@ def generate_customers(fake: Faker) -> pd.DataFrame:
         )
 
     df = pd.DataFrame(rows)
+    used: set[int] = set()
 
-    # Completeness: 50 NULL emails
-    null_email_indices = random.sample(range(len(df)), NULL_EMAILS)
-    df.loc[null_email_indices, "email"] = None
+    for idx in _pick_indices(df, NULL_EMAILS, used):
+        pk = df.at[idx, "customer_id"]
+        df.at[idx, "email"] = None
+        _record_defect(
+            "customers", pk, "Completeness", "COMP_002", "email",
+            "NULL email", "",
+        )
 
-    # Uniqueness: 10 duplicate customer_ids (reuse existing IDs from first 10 rows)
-    dup_source_ids = df.loc[:9, "customer_id"].tolist()
-    dup_target_indices = random.sample(
-        range(10, len(df)), DUPLICATE_CUSTOMER_IDS
-    )
-    for idx, source_id in zip(dup_target_indices, dup_source_ids):
+    dup_source_ids = df.loc[: DUPLICATE_CUSTOMER_IDS - 1, "customer_id"].tolist()
+    for idx, source_id in zip(
+        _pick_indices(df, DUPLICATE_CUSTOMER_IDS, used), dup_source_ids
+    ):
+        pk = df.at[idx, "customer_id"]
         df.at[idx, "customer_id"] = source_id
+        _record_defect(
+            "customers", pk, "Uniqueness", "UNIQ_001", "customer_id",
+            "Duplicate customer_id", source_id,
+        )
+
+    invalid_emails = ["not-an-email", "bad@", "@missing-local.com", "spaces in@email.com", "nodomain"]
+    for i, idx in enumerate(_pick_indices(df, INVALID_EMAILS, used)):
+        pk = df.at[idx, "customer_id"]
+        bad_email = invalid_emails[i % len(invalid_emails)]
+        df.at[idx, "email"] = bad_email
+        _record_defect(
+            "customers", pk, "Logic & Type", "TYPE_002", "email",
+            "Invalid email format", bad_email,
+        )
+
+    bad_dates = ["2024-13-45", "not-a-date", "32/01/2020", "2020-02-30"]
+    for i, idx in enumerate(_pick_indices(df, INVALID_SIGNUP_DATES, used)):
+        pk = df.at[idx, "customer_id"]
+        bad_date = bad_dates[i % len(bad_dates)]
+        df.at[idx, "signup_date"] = bad_date
+        _record_defect(
+            "customers", pk, "Logic & Type", "TYPE_005", "signup_date",
+            "Invalid signup_date", bad_date,
+        )
+
+    for idx in _pick_indices(df, NEGATIVE_LIFETIME_VALUES, used):
+        pk = df.at[idx, "customer_id"]
+        df.at[idx, "lifetime_value"] = round(random.uniform(-5000.0, -1.0), 2)
+        _record_defect(
+            "customers", pk, "Logic & Type", "BIZ_001", "lifetime_value",
+            "Negative lifetime_value", str(df.at[idx, "lifetime_value"]),
+        )
 
     return df
 
@@ -146,98 +255,133 @@ def generate_orders(
     customers: pd.DataFrame,
     products: pd.DataFrame,
 ) -> pd.DataFrame:
-    """Generate order records, then inject completeness, uniqueness, and FK defects."""
+    """Generate order records with completeness, uniqueness, referential, and logic defects."""
     valid_customer_ids = customers["customer_id"].unique().tolist()
     valid_product_ids = products["product_id"].tolist()
-
     order_start = datetime(2020, 1, 1)
     order_end = datetime(2025, 12, 31)
 
     rows = []
     for i in range(1, NUM_ORDERS + 1):
-        customer_id = random.choice(valid_customer_ids)
-        product_id = random.choice(valid_product_ids)
         quantity = random.randint(1, 10)
         unit_price = round(random.uniform(5.0, 500.0), 2)
-        total_amount = round(quantity * unit_price, 2)
         order_date = _random_date(fake, order_start, order_end)
         status = random.choice(ORDER_STATUSES)
-        payment_date = order_date
-        if status in {"Pending", "Cancelled"}:
-            payment_date = None
-
+        payment_date = order_date if status not in {"Pending", "Cancelled"} else None
         rows.append(
             {
                 "order_id": f"ORD-{i:06d}",
-                "customer_id": customer_id,
+                "customer_id": random.choice(valid_customer_ids),
                 "order_date": order_date,
-                "product_id": product_id,
+                "product_id": random.choice(valid_product_ids),
                 "quantity": quantity,
                 "unit_price": unit_price,
-                "total_amount": total_amount,
+                "total_amount": round(quantity * unit_price, 2),
                 "order_status": status,
                 "payment_date": payment_date,
             }
         )
 
     df = pd.DataFrame(rows)
+    used: set[int] = set()
 
-    # Track indices already modified to avoid overlapping defect categories
-    used_indices: set[int] = set()
-
-    def _pick_indices(count: int) -> list[int]:
-        available = [i for i in range(len(df)) if i not in used_indices]
-        chosen = random.sample(available, count)
-        used_indices.update(chosen)
-        return chosen
-
-    # Completeness: 100 NULL customer_ids
-    for idx in _pick_indices(NULL_ORDER_CUSTOMER_IDS):
+    for idx in _pick_indices(df, NULL_ORDER_CUSTOMER_IDS, used):
+        pk = df.at[idx, "order_id"]
         df.at[idx, "customer_id"] = None
+        _record_defect(
+            "orders", pk, "Completeness", "COMP_007", "customer_id",
+            "NULL customer_id", "",
+        )
 
-    # Completeness: 200 NULL product_ids
-    for idx in _pick_indices(NULL_ORDER_PRODUCT_IDS):
+    for idx in _pick_indices(df, NULL_ORDER_PRODUCT_IDS, used):
+        pk = df.at[idx, "order_id"]
         df.at[idx, "product_id"] = None
+        _record_defect(
+            "orders", pk, "Completeness", "COMP_003", "product_id",
+            "NULL product_id", "",
+        )
 
-    # Referential integrity: 50 orphan customer_ids
     orphan_customer_values = [
         f"{ORPHAN_CUSTOMER_PREFIX}-{i:03d}" for i in range(1, ORPHAN_CUSTOMER_IDS + 1)
     ]
-    for idx, orphan_id in zip(_pick_indices(ORPHAN_CUSTOMER_IDS), orphan_customer_values):
+    for idx, orphan_id in zip(
+        _pick_indices(df, ORPHAN_CUSTOMER_IDS, used), orphan_customer_values
+    ):
+        pk = df.at[idx, "order_id"]
         df.at[idx, "customer_id"] = orphan_id
+        _record_defect(
+            "orders", pk, "Referential Integrity", "REF_001", "customer_id",
+            "Orphan customer_id", orphan_id,
+        )
 
-    # Referential integrity: 30 orphan product_ids
     orphan_product_values = [
         f"{ORPHAN_PRODUCT_PREFIX}-{i:03d}" for i in range(1, ORPHAN_PRODUCT_IDS + 1)
     ]
-    for idx, orphan_id in zip(_pick_indices(ORPHAN_PRODUCT_IDS), orphan_product_values):
+    for idx, orphan_id in zip(
+        _pick_indices(df, ORPHAN_PRODUCT_IDS, used), orphan_product_values
+    ):
+        pk = df.at[idx, "order_id"]
         df.at[idx, "product_id"] = orphan_id
+        _record_defect(
+            "orders", pk, "Referential Integrity", "REF_003", "product_id",
+            "Orphan product_id", orphan_id,
+        )
 
-    # Uniqueness: 20 duplicate order_ids
-    dup_source_ids = df.loc[:19, "order_id"].tolist()
-    dup_target_indices = _pick_indices(DUPLICATE_ORDER_IDS)
-    for idx, source_id in zip(dup_target_indices, dup_source_ids):
+    dup_source_ids = df.loc[: DUPLICATE_ORDER_IDS - 1, "order_id"].tolist()
+    for idx, source_id in zip(
+        _pick_indices(df, DUPLICATE_ORDER_IDS, used), dup_source_ids
+    ):
+        pk = df.at[idx, "order_id"]
         df.at[idx, "order_id"] = source_id
+        _record_defect(
+            "orders", pk, "Uniqueness", "UNIQ_004", "order_id",
+            "Duplicate order_id", source_id,
+        )
+
+    bad_dates = ["2024-13-45", "invalid-date", "2020-02-30"]
+    for i, idx in enumerate(_pick_indices(df, INVALID_ORDER_DATES, used)):
+        pk = df.at[idx, "order_id"]
+        bad_date = bad_dates[i % len(bad_dates)]
+        df.at[idx, "order_date"] = bad_date
+        _record_defect(
+            "orders", pk, "Logic & Type", "TYPE_005", "order_date",
+            "Invalid order_date", bad_date,
+        )
+
+    for idx in _pick_indices(df, NEGATIVE_ORDER_QUANTITIES, used):
+        pk = df.at[idx, "order_id"]
+        df.at[idx, "quantity"] = random.randint(-10, -1)
+        _record_defect(
+            "orders", pk, "Logic & Type", "BIZ_002", "quantity",
+            "Negative quantity", str(df.at[idx, "quantity"]),
+        )
+
+    for idx in _pick_indices(df, NEGATIVE_UNIT_PRICES, used):
+        pk = df.at[idx, "order_id"]
+        df.at[idx, "unit_price"] = round(random.uniform(-500.0, -1.0), 2)
+        _record_defect(
+            "orders", pk, "Logic & Type", "BIZ_001", "unit_price",
+            "Negative unit_price", str(df.at[idx, "unit_price"]),
+        )
 
     return df
 
 
 def write_csv(df: pd.DataFrame, path: Path) -> None:
-    """Write a single CSV file (empty strings represent NULLs)."""
     path.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(path, index=False, na_rep="")
     logger.info("Wrote %s (%d rows)", path.name, len(df))
 
 
-def validate_with_pyspark(output_dir: Path) -> None:
-    """
-    Read generated CSVs with PySpark to confirm pipeline compatibility.
+def write_manifest(output_dir: Path) -> None:
+    manifest_dir = output_dir / "manifest"
+    manifest_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = manifest_dir / "defect_manifest.csv"
+    pd.DataFrame(DEFECT_MANIFEST).to_csv(manifest_path, index=False)
+    logger.info("Wrote defect manifest: %s (%d defects)", manifest_path, len(DEFECT_MANIFEST))
 
-    Validation steps:
-      1. Spark session starts in local mode.
-      2. Each CSV is read with header inference disabled (string columns).
-      3. Row counts are logged and compared to expected volumes.
-    """
+
+def validate_with_pyspark(output_dir: Path) -> None:
     try:
         from pyspark.sql import SparkSession
     except ImportError:
@@ -252,13 +396,10 @@ def validate_with_pyspark(output_dir: Path) -> None:
             .getOrCreate()
         )
     except Exception as exc:
-        logger.warning(
-            "PySpark validation skipped (Java/Spark unavailable): %s", exc
-        )
+        logger.warning("PySpark validation skipped (Java/Spark unavailable): %s", exc)
         return
 
     spark.sparkContext.setLogLevel("WARN")
-
     expected = {
         "customers.csv": NUM_CUSTOMERS,
         "products.csv": NUM_PRODUCTS,
@@ -274,60 +415,32 @@ def validate_with_pyspark(output_dir: Path) -> None:
                 raise ValueError(
                     f"{filename}: expected {expected_count} rows, got {actual_count}"
                 )
-            logger.info(
-                "PySpark validation passed: %s (%d rows, %d columns)",
-                filename,
-                actual_count,
-                len(df.columns),
-            )
+            logger.info("PySpark validation passed: %s (%d rows)", filename, actual_count)
     finally:
         spark.stop()
 
 
-def log_defect_summary(customers: pd.DataFrame, orders: pd.DataFrame) -> dict[str, int]:
-    """Compute and log defect counts for verification."""
-    summary = {
-        "null_emails": int(customers["email"].isna().sum()),
-        "duplicate_customer_id_rows": int(
-            customers["customer_id"].duplicated(keep=False).sum()
-        ),
-        "duplicate_customer_id_injections": DUPLICATE_CUSTOMER_IDS,
-        "null_order_customer_ids": int(orders["customer_id"].isna().sum()),
-        "null_order_product_ids": int(orders["product_id"].isna().sum()),
-        "orphan_customer_ids": int(
-            orders["customer_id"]
-            .fillna("")
-            .str.startswith(ORPHAN_CUSTOMER_PREFIX)
-            .sum()
-        ),
-        "orphan_product_ids": int(
-            orders["product_id"]
-            .fillna("")
-            .str.startswith(ORPHAN_PRODUCT_PREFIX)
-            .sum()
-        ),
-        "duplicate_order_id_rows": int(orders["order_id"].duplicated(keep=False).sum()),
-        "duplicate_order_id_injections": DUPLICATE_ORDER_IDS,
-    }
-    summary["total_defective_rows"] = (
-        summary["null_emails"]
-        + DUPLICATE_CUSTOMER_IDS
-        + summary["null_order_customer_ids"]
-        + summary["null_order_product_ids"]
-        + summary["orphan_customer_ids"]
-        + summary["orphan_product_ids"]
-        + DUPLICATE_ORDER_IDS
-    )
+def log_defect_summary() -> dict[str, int]:
+    manifest_df = pd.DataFrame(DEFECT_MANIFEST)
+    by_category = manifest_df.groupby("category").size().to_dict() if len(manifest_df) else {}
+    summary = {"total_defects": len(DEFECT_MANIFEST), **by_category}
 
     logger.info("Defect summary:")
     for key, value in summary.items():
         logger.info("  %s: %d", key, value)
 
+    if len(DEFECT_MANIFEST) != TARGET_DEFECT_COUNT:
+        logger.warning(
+            "Expected %d defects, got %d", TARGET_DEFECT_COUNT, len(DEFECT_MANIFEST)
+        )
+
     return summary
 
 
 def generate_all(output_dir: Path, validate: bool = True) -> dict[str, int]:
-    """Generate all datasets, write CSVs, and optionally validate with PySpark."""
+    global DEFECT_MANIFEST
+    DEFECT_MANIFEST = []
+
     random.seed(RANDOM_SEED)
     fake = _init_faker()
 
@@ -343,8 +456,9 @@ def generate_all(output_dir: Path, validate: bool = True) -> dict[str, int]:
     write_csv(products, output_dir / "products.csv")
     write_csv(customers, output_dir / "customers.csv")
     write_csv(orders, output_dir / "orders.csv")
+    write_manifest(output_dir)
 
-    summary = log_defect_summary(customers, orders)
+    summary = log_defect_summary()
 
     if validate:
         validate_with_pyspark(output_dir)
@@ -367,7 +481,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Skip PySpark validation step",
     )
-    return parser.parse_args([])
+    return parser.parse_args()
 
 
 def main() -> None:

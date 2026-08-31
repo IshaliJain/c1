@@ -70,11 +70,19 @@ def apply_no_referential_check(df: DataFrame) -> DataFrame:
     return df.withColumn("_failed_referential", lit(False))
 
 
+VALID_ORDER_STATUSES = [
+    "Pending", "Processing", "Shipped", "Delivered", "Cancelled", "Returned",
+]
+
+
 def apply_logic_type_checks_customers(df: DataFrame) -> DataFrame:
-    """Validate signup_date format and non-negative lifetime_value."""
+    """Validate signup_date, email format, and non-negative lifetime_value."""
     signup_valid = col("signup_date").isNull() | to_date(
         col("signup_date"), "yyyy-MM-dd"
     ).isNotNull()
+    email_valid = is_null_or_empty("email") | col("email").rlike(
+        r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+    )
     ltv_numeric = col("lifetime_value").cast("double")
     ltv_valid = col("lifetime_value").isNull() | (
         ltv_numeric.isNotNull() & (ltv_numeric >= 0)
@@ -82,7 +90,7 @@ def apply_logic_type_checks_customers(df: DataFrame) -> DataFrame:
 
     return df.withColumn(
         "_failed_logic_type",
-        ~(signup_valid & ltv_valid),
+        ~(signup_valid & email_valid & ltv_valid),
     )
 
 
@@ -118,6 +126,9 @@ def apply_logic_type_checks_orders(df: DataFrame) -> DataFrame:
         col("total_amount").cast("double").isNotNull()
         & (col("total_amount").cast("double") > 0)
     )
+    status_valid = col("order_status").isNull() | col("order_status").isin(
+        VALID_ORDER_STATUSES
+    )
 
     return df.withColumn(
         "_failed_logic_type",
@@ -127,5 +138,6 @@ def apply_logic_type_checks_orders(df: DataFrame) -> DataFrame:
             & quantity_valid
             & unit_price_valid
             & total_amount_valid
+            & status_valid
         ),
     )

@@ -81,3 +81,7 @@ coverage.xml
 # Data files (local only; data/ directory tracked via .gitkeep)
 data/*
 !data/.gitkeep
+!data/manifest/
+
+# Generated reports
+quality-report.md

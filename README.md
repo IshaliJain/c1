@@ -16,7 +16,7 @@ data/ (CSV)  →  Bronze (raw Delta)  →  Silver (quality-flagged Delta)  →  
 
 | Layer | Purpose | Key Output |
 |-------|---------|------------|
-| **Data Generation** | Synthetic CSVs with 460 intentional defects | `data/*.csv` |
+| **Data Generation** | Synthetic CSVs with **700 intentional defects** | `data/*.csv`, `data/manifest/defect_manifest.csv` |
 | **Bronze** | Raw ingestion, append-only, schema preserved | `bronze/{customers,orders,products}` |
 | **Silver** | 4 quality checks, row-level flagging (no drops) | `silver/{entity}` + `quality_summary` |
 | **Gold** | Business aggregations for BI | `gold/{sales_by_product,...}` |
@@ -158,7 +158,7 @@ python src/bronze/ingest_all.py
 %run /Repos/<your-user>/c1/src/silver/transform_all
 ```
 
-**Expected output:** Quality-flagged Silver tables + `quality_summary` with pass/fail metrics per check category.
+**Expected output:** Quality-flagged Silver tables + `quality_summary` Delta table + `quality-report.md` with pass percentages for all 4 check categories.
 
 Verify failures were detected:
 
@@ -251,12 +251,15 @@ Invalid rows are **flagged, not deleted**. The `quality_check_result` column con
 
 ## Intentional Data Defects
 
-460 defects injected during data generation:
+**700 defects** injected during data generation (see `data/manifest/defect_manifest.csv`):
 
-| Entity | Defects |
-|--------|---------|
-| customers | 50 NULL emails, 10 duplicate customer_ids |
-| orders | 100 NULL customer_ids, 200 NULL product_ids, 50 orphan customers, 30 orphan products, 20 duplicate order_ids |
+| Category | Count |
+|----------|-------|
+| Completeness | 370 |
+| Uniqueness | 50 |
+| Referential Integrity | 80 |
+| Logic & Type | 200 |
+| **Total** | **700** |
 
 See `src/data_generation/DATA_GENERATION_NOTES.md` for full details.
 
@@ -272,7 +275,9 @@ See `src/data_generation/DATA_GENERATION_NOTES.md` for full details.
 | `final-ai-usage-summary.md` | What AI got right/wrong |
 | `ai-prompts/` | Per-phase AI prompt history |
 | `design-notes.md` | Architecture design decisions |
-| `data-quality-strategy.md` | Quality check specifications |
+| `SUBMISSION_CHECKLIST.md` | Final submission component checklist |
+| `databricks-ce-verification.md` | Databricks CE compatibility verification |
+| `quality-report.md` | Silver quality pass percentages (generated at runtime) |
 
 ---
 
